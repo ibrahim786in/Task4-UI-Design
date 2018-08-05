@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Task4 UI</string>
+    <string-array name="modes1">
+        <item>05</item>
+    </string-array>
+
+    <string-array name="modes2">
+        <item>30</item>
+    </string-array>
+
+    <string-array name="modes3">
+        <item>00</item>
+    </string-array>
 </resources>
