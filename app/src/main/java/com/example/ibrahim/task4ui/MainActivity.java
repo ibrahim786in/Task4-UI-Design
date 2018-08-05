@@ -25,12 +25,13 @@ public class MainActivity extends AppCompatActivity {
         L1 = (LinearLayout) findViewById(R.id.newAlarm);
         L2 = (LinearLayout) findViewById(R.id.repleableLayout);
 
-        FloatingActionButton floatBtn = (FloatingActionButton) findViewById(R.id.floatBtn);
+        final FloatingActionButton floatBtn = (FloatingActionButton) findViewById(R.id.floatBtn);
         floatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 L1.setVisibility(View.GONE);
                 L2.setVisibility(View.VISIBLE);
+                floatBtn.setVisibility(View.GONE);
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 L1.setVisibility(View.VISIBLE);
                 L2.setVisibility(View.GONE);
+                floatBtn.setVisibility(View.VISIBLE);
             }
         });
     }
