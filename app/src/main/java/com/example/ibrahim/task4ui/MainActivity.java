@@ -5,11 +5,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Animation centreMove = AnimationUtils.loadAnimation(MainActivity.this, R.anim.centre_move);
-                centreMove.setDuration(300);
+                centreMove.setDuration(200);
                 centreMove.setFillAfter(false);
                 floatBtn.startAnimation(centreMove);
                 floatBtn.setVisibility(View.GONE);
@@ -49,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 L1.startAnimation(leftt_swipe);
                 L1.setVisibility(View.GONE);
 
-                Animation fadeIn = new AlphaAnimation(0, 1);
-                fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
-                fadeIn.setDuration(300);
+                ScaleAnimation fade_in = new ScaleAnimation(0f, 1f, 0f, 1f,
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                fade_in.setDuration(500);     // animation duration in milliseconds
+                fade_in.setFillAfter(true);    // If fillAfter is true, the transformation that this animation performed will persist when it is finished.
 
                 AnimationSet animation = new AnimationSet(false); //change to false
-                animation.addAnimation(fadeIn);
+                animation.addAnimation(fade_in);
                 L2.setVisibility(View.VISIBLE);
                 L2.setAnimation(animation);
 
@@ -70,10 +70,11 @@ public class MainActivity extends AppCompatActivity {
                 L1.startAnimation(RightSwipe);
                 L1.setVisibility(View.VISIBLE);
 
-                Animation fadeOut = new AlphaAnimation(1, 0);
+                ScaleAnimation fadeOut = new ScaleAnimation(1f, 0f, 1f, 0f,
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
                 fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-                fadeOut.setStartOffset(300);
-                fadeOut.setDuration(300);
+                fadeOut.setStartOffset(200);
+                fadeOut.setDuration(200);
 
                 AnimationSet animation = new AnimationSet(false); //change to false
                 animation.addAnimation(fadeOut);
